@@ -1,0 +1,31 @@
+version: '3.4'
+networks:
+    backend:
+
+services:
+    customerdb:
+        container_name: customer-db
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        environment:
+            - ACCEPT_EULA=Y
+            - MSSQL_SA_PASSWORD=apple@123#
+        networks:
+            - backend
+        ports:
+            - 8001:1433
+    samplewebapi:
+        container_name: customer-api
+        image: ${DOCKER_REGISTRY-}samplewebapi
+        build:
+            context: .
+            dockerfile: SampleWebApi/Dockerfile
+        networks:
+            - backend
+        ports:
+            - 8002:1433
+        depends_on:
+            - customerdb
+        environment:
+            - DB_SERVER=customer-db
+            - DB_NAME=customerdb
+            - DB_PWD=apple@123#
