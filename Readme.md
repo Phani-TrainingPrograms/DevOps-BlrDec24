@@ -152,22 +152,29 @@ docker run java-app
 4. Optionally U can also install Docker Tools for Visual Studio.
 
 #### Creating the Application:
+1. VS 2022 should be selected. Create a Project of the type ASP.NET CORE WEB API. 
+2. Create the required Data classes
+3. Create the Controllers requried for the Application. 
+4. Create the requried docker files. 
+5. If connecting to SQL server, create the image of the SQL server in docker
+6. Using YAML, U provide the network b/w the Application Container and SQL server container. This feature is called as Orchestration feature.
+7. Build the Application and run the App to expose the App into the Docker.
+8. Open the Package Manager Tool Window and run the following commands to generate the required tables:
+    - add-migration mig1.
+    - update-database
+9. U can test the API using the Swagger window that opens when the App starts.      
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Kubernetes(K8s)
+- It is a container management system developed on Google platform. It's main purpose is helping in managing the Containerized Apps on various platforms like cloud, Virtual Servers and local servers. It is said to be one of the most popular Container management Tools. 
+- It is purely a cloud based environment. It comes with many automation tools that will be used to maintain the large scale containers as one Unit. 
+- As DevOps Engineer, one will get skills on using these automation tools to manage the Applications and ensure that no break down of the software happen. 
+- It uses a concept called CLUSTERS where each cluster is a repository of 100s of containers grouped into Worker nodes or PODs. Each POD might be an Application that has multiple containers in it. Each container can have one or more Microservices in it. 
+- K8s maintain multiple clusters for the management of the nodes. The Application will be available to user thru Primary Cluster. If the primary cluster fails for maintainence or any other reason, a secondary cluster will be made available for the Application to continue its services to the Customer. Once the Primary Cluster is back to work, a cached state of the secondary cluster is pushed into the Primary one and the Application continues to provide the services. 
 
+### How K8s work?
+- It is linux based Environment that shares lots of resources required to manage UR Complex Apps. It is primarily used for Distributed Computing Applications where the K8s abstract the underlying hardware resources and offers std and consistant UI that one can monitor from a common place. This UI will be used by the Dev Ops Engineer who will be responsible for the maintainence of the Application. The UI looks similar to a Dashboard of JENKINS, where he/she can monitor multiple applications, clusters and allocate the resources required for each of the Applications. The DevOps Engineer also determines the amount of resources that each App may require and allocate the resources accordingly. 
 
-### Kubernetes:
-- Container Management tool developed by Google. Its main purpose is maintaining 100s of containers grouped into pods and nodes. It maintains a host of vitual Servers that could contain multiple sets of Nodes inside a cluster environment. 
-- It is purely a cloud based Environment. The Application will be on a cloud like AWS and can host many services inside the Cluster.
-- Node is a customized environment that contains a group of PODs. Sometimes PODs are also called as NODE. 
-- It uses a concept called Clusters where each clustor is a repository of 100s of containers grouped into units called as PODs.
-- POD is an closed arrangement of multiple containers that can serve a purpose. 
-
-### How it works?
-- It is a linux based environment that shares lots of resources required to manage the Services that are registered inside its API Gateway. The K8s abstracts the underlying architecture and technology for its End users. 
-- It stores the services in the form of containers. 
-- There is a main environment called MASTER NODE that contains 3 components:
-    - etcd component registers all the Nodes and pods registered with it. 
-    - controller that is responsible to pull the services requested by the user. 
-    - schedular that opens the service requested, and makes it available for a certain period of time. It is responsible for providing the resources required for the service to make it available. 
-
-    Link on overview of K8s:
-    https://youtube.com/watch?v=X48VuDVv0do&feature=shares
+### Issues:
+- It needs a heavy infrastructure to showcase the Application. The Complete pipeline is done by a team of testers, DevOps Engineers and QAT teams. Its a collaborative work to make UR services hosted in a K8s server. Its not so user friendly. Ofcourse, there are many UI tools to manage these infrastructure. 
+NOTE: https://youtube.com/watch?v=X48VuDVv0do&feature=shares
+- U can view this tutorial for further reference. 
