@@ -1,0 +1,3 @@
+Username: txtName 
+UserPwd: txtPwd 
+Encrypted: false
