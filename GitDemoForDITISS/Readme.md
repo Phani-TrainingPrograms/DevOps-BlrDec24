@@ -57,4 +57,23 @@ git rm --cached filename
 - U can make changes to it. 
 - U can push the updated code back.
 ### Pushing local Repo to Remote
+- Follow the steps for adding the local repo into Remote location
+    - Add git init to it.
+    - Commit all the code to the local git
+    - run the below commands:
+  ```
+  git remote add origin <path of the url>
+  git branch -M main
+  git push -u origin main
+  ```        
 ### Branches
+- Branches help in colaborating the code. Assume that U want to develop certain feature which is on experimental use case. U should create a branch of the main and work on the feature branch
+- U can push the code into the feature branch, then allowing the main to make a pull request.
+- Once the code is approved/accepted, U can merge the branch into main.
+- Optionally U can delete the branch after the merging is complete.
+  ```
+  git checkout b featureBr
+  git add newFiles
+  git commit -m "adding to branc"
+  git push -u origin featureBr
+  ```
